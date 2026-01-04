@@ -1,0 +1,237 @@
+<section id="contacto" class="py-20 bg-zinc-900">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-gray-200 text-4xl md:text-5xl font-bold mb-4 text-shadow-[4px_5px_4px_rgb(0_0_0_/0.9)]"
+      >
+        Reserva tu Cita
+      </h2>
+      <div class="gold-line mx-auto mb-4"></div>
+      <p
+        class="text-gray-400 text-lg text-shadow-[2px_3px_2px_rgb(0_0_0_/0.9)]"
+      >
+        Completa el formulario y nos pondremos en contacto contigo
+      </p>
+    </div>
+
+    <form
+      id="contact-form"
+      class="bg-black p-8 md:p-12 rounded-lg border border-zinc-800"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label
+            for="nombre"
+            class="block text-gray-400 text-sm font-medium mb-2"
+            >Nombre Completo *</label
+          >
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white"
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block text-gray-400 text-sm font-medium mb-2">Email *</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label
+            for="telefono"
+            class="block text-gray-400 text-sm font-medium mb-2"
+            >Teléfono *</label
+          >
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            required
+            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white"
+          />
+        </div>
+        <div>
+          <label
+            for="servicio"
+            class="block text-gray-400 text-sm font-medium mb-2"
+            >Servicio *</label
+          >
+          <select
+            id="servicio"
+            name="servicio"
+            required
+            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white"
+          >
+            <option value="">Selecciona un servicio</option>
+            <option value="corte">Corte Clásico</option>
+            <option value="barba">Barba y Bigote</option>
+            <option value="tinte">Tinte</option>
+            <option value="tratamiento">Tratamiento Capilar</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label
+            for="fecha"
+            class="block text-gray-400 text-sm font-medium mb-2"
+            >Fecha Preferida *</label
+          >
+          <input
+            type="date"
+            id="fecha"
+            name="fecha"
+            required
+            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white"
+          />
+        </div>
+        <div>
+          <label for="hora" class="block text-gray-400 text-sm font-medium mb-2"
+            >Hora Preferida *</label
+          >
+          <input
+            type="time"
+            id="hora"
+            name="hora"
+            required
+            class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg focus:outline-none focus:border-[#D4AF37] text-white"
+          />
+        </div>
+      </div>
+
+      <div id="form-message" class="mb-6 p-4 rounded-lg hidden"></div>
+
+      <button
+        type="submit"
+        class="w-full bg-[#D4AF37] hover:bg-[#B8941F] text-black font-bold py-4 rounded-lg transition duration-300 transform hover:scale-105"
+      >
+        Enviar Solicitud de Reserva
+      </button>
+    </form>
+  </div>
+</section>
+
+<style>
+  /* Estilos para los iconos de calendario y reloj */
+  input[type='date']::-webkit-calendar-picker-indicator,
+  input[type='time']::-webkit-calendar-picker-indicator {
+    filter: invert(35%) sepia(50%) saturate(500%) hue-rotate(10deg)
+      brightness(95%);
+    cursor: pointer;
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator:hover,
+  input[type='time']::-webkit-calendar-picker-indicator:hover {
+    filter: invert(60%) sepia(60%) saturate(600%) hue-rotate(10deg)
+      brightness(100%);
+  }
+
+  /* Para Firefox */
+  input[type='date'],
+  input[type='time'] {
+    color-scheme: dark;
+  }
+</style>
+
+<script>
+  const contactForm = document.getElementById('contact-form');
+  const formMessage = document.getElementById('form-message');
+
+  function showMessage(message: string, type: 'success' | 'error') {
+    if (!formMessage) return;
+
+    formMessage.textContent = message;
+    formMessage.classList.remove(
+      'hidden',
+      'bg-green-900',
+      'bg-red-900',
+      'text-green-200',
+      'text-red-200'
+    );
+
+    if (type === 'success') {
+      formMessage.classList.add('bg-green-900', 'text-green-200');
+    } else {
+      formMessage.classList.add('bg-red-900', 'text-red-200');
+    }
+
+    setTimeout(() => {
+      formMessage.classList.add('hidden');
+    }, 5000);
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nombre = (
+        document.getElementById('nombre') as HTMLInputElement
+      )?.value.trim();
+      const email = (
+        document.getElementById('email') as HTMLInputElement
+      )?.value.trim();
+      const telefono = (
+        document.getElementById('telefono') as HTMLInputElement
+      )?.value.trim();
+      const servicio = (
+        document.getElementById('servicio') as HTMLSelectElement
+      )?.value;
+      const fecha = (document.getElementById('fecha') as HTMLInputElement)
+        ?.value;
+      const hora = (document.getElementById('hora') as HTMLInputElement)?.value;
+
+      if (!nombre || !email || !telefono || !servicio || !fecha || !hora) {
+        showMessage('Por favor completa todos los campos requeridos.', 'error');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showMessage('Por favor ingresa un email válido.', 'error');
+        return;
+      }
+
+      const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+      if (!phoneRegex.test(telefono) || telefono.length < 10) {
+        showMessage('Por favor ingresa un teléfono válido.', 'error');
+        return;
+      }
+
+      const selectedDate = new Date(fecha);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (selectedDate < today) {
+        showMessage('Por favor selecciona una fecha futura.', 'error');
+        return;
+      }
+
+      showMessage(
+        '¡Solicitud enviada con éxito! Nos pondremos en contacto contigo pronto.',
+        'success'
+      );
+      (contactForm as HTMLFormElement).reset();
+    });
+  }
+
+  // Set minimum date for date input to today
+  const fechaInput = document.getElementById('fecha') as HTMLInputElement;
+  if (fechaInput) {
+    const today = new Date().toISOString().split('T')[0];
+    fechaInput.setAttribute('min', today);
+  }
+</script>

@@ -1,0 +1,68 @@
+---
+const servicios = [
+  {
+    emoji:
+      '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" d="m12 16.61l-4.276 4.589C7 22 6.102 22.5 5.002 22.5a3.5 3.5 0 1 1 3.162-5M12 16.61l9.641-10.35a3.2 3.2 0 0 0-.078-4.444l-.316-.316h-.25l-.106.133A55.4 55.4 0 0 1 8.6 12.961L2.36 6.26a3.2 3.2 0 0 1 .078-4.444l.316-.316M12 16.61l4.276 4.589C17 22 17.898 22.5 18.998 22.5a3.5 3.5 0 1 0-3.162-5M2.753 1.5h.079m-.08 0h.25l.107.133A55.4 55.4 0 0 0 12 10.477"/></svg>',
+    titulo: 'Corte Clásico',
+    descripcion: 'Precisión y estilo en cada corte, adaptado a tu personalidad',
+    precio: '$15.000',
+  },
+  {
+    emoji:
+      '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><path fill="currentColor" d="M21 12c-2 0-3-3-6-3s-3 2-3 2s0-2-3-2s-4 3-6 3c-1 0-2-1-2-1s1 5 5 5c5 0 6-3 6-3s1 3 6 3c4 0 5-5 5-5s-1 1-2 1"/></svg>',
+    titulo: 'Barba y Bigote',
+    descripcion: 'Perfilado perfecto con técnicas tradicionales y modernas',
+    precio: '$10.500',
+  },
+  {
+    emoji:
+      '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><path fill="currentColor" d="m16 3.438l-.781.937s-2 2.41-4.031 5.406c-1.016 1.5-2.063 3.137-2.844 4.719S7 17.598 7 19c0 4.945 4.055 9 9 9s9-4.055 9-9c0-1.402-.563-2.918-1.344-4.5s-1.828-3.219-2.843-4.719c-2.032-2.996-4.032-5.406-4.032-5.406zm0 3.218c.559.692 1.605 1.918 3.188 4.25c.984 1.45 1.937 3.047 2.656 4.5C22.562 16.86 23 18.203 23 19c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-.797.438-2.14 1.156-3.594c.719-1.453 1.672-3.05 2.656-4.5c1.583-2.332 2.63-3.558 3.188-4.25M11 19c0 2.746 2.254 5 5 5v-2a3 3 0 0 1-3-3z"/></svg>',
+    titulo: 'Tinte',
+    descripcion: 'Coloración profesional para un look natural y sofisticado',
+    precio: '$25.000',
+  },
+  {
+    emoji:
+      '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M23.225 10.762h-5.2a6 6 0 1 1-12 0H.775"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.275 10.012a3.75 3.75 0 0 0 7.5 0c0-2.655-2.937-3.548-2.053-7.877a.75.75 0 0 0-1.208-.735a12.3 12.3 0 0 0-4.239 8.612"/><path d="M1.525 22.387a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75m6.75.75a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75m7.5.75a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75m6.75.75a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75m0-6.75a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75m-3 4.5a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75m-15 .75a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75m-3-3a.375.375 0 0 1 0-.75m0 .75a.375.375 0 0 0 0-.75"/></g></svg>',
+    titulo: 'Tratamiento Capilar',
+    descripcion: 'Cuidado premium para revitalizar y fortalecer tu cabello',
+    precio: '$50.000',
+  },
+];
+---
+
+<section id="servicios" class="py-20 bg-zinc-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-4xl text-gray-200 md:text-5xl font-bold mb-4 text-shadow-[4px_5px_4px_rgb(0_0_0_/0.9)]"
+      >
+        Nuestros Servicios
+      </h2>
+      <div class="gold-line mx-auto mb-4"></div>
+      <p
+        class="text-gray-400 text-lg text-shadow-[2px_3px_2px_rgb(0_0_0_/0.9)]"
+      >
+        Elegancia y profesionalismo en cada detalle
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+      {
+        servicios.map((servicio) => (
+          <div class="bg-black p-8 rounded-lg border border-zinc-700 text-center">
+            <div
+              class="text-[#D4AF37] text-5xl mb-14 mt-8 justify-items-center"
+              set:html={servicio.emoji}
+            />
+            <h3 class="text-2xl text-gray-200 font-bold mb-4">
+              {servicio.titulo}
+            </h3>
+            <p class="text-gray-400 mb-6">{servicio.descripcion}</p>
+            <p class="text-[#D4AF37] text-3xl font-bold">{servicio.precio}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

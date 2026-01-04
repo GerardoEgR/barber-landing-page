@@ -1,0 +1,97 @@
+---
+const imagenes = [
+  {
+    src: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80',
+    alt: 'Estilo y Distinción',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80',
+    alt: 'Corte clásico',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80',
+    alt: 'Corte moderno',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80',
+    alt: 'Barbería de lujo',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=600&q=80',
+    alt: 'Productos premium',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&q=80',
+    alt: 'Barberos profesionales',
+  },
+];
+---
+
+<section id="galeria" class="py-20 bg-zinc-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-4xl text-gray-200 md:text-5xl font-bold mb-4 text-shadow-[4px_5px_4px_rgb(0_0_0_/0.9)]"
+      >
+        Galería
+      </h2>
+      <div class="gold-line mx-auto mb-4"></div>
+      <p
+        class="text-gray-400 text-lg text-shadow-[2px_3px_2px_rgb(0_0_0_/0.9)]"
+      >
+        Nuestro trabajo habla por sí mismo
+      </p>
+    </div>
+
+    <div
+      id="gallery"
+      data-imagenes={JSON.stringify(imagenes)}
+      class="grid grid-cols-2 md:grid-cols-3 gap-4"
+    >
+      {
+        imagenes.map((imagen) => (
+          <div class="overflow-hidden rounded-lg card-hover border border-zinc-700 hover:border-[#D4AF37] hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.9)]">
+            <img
+              src={imagen.src}
+              alt={imagen.alt}
+              class="w-full h-64 object-cover"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div
+    id="lightbox"
+    class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+  >
+    <button
+      id="closeBtn"
+      class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-10"
+      >&times;</button
+    >
+
+    <button
+      id="prevBtn"
+      class="absolute left-4 text-white text-4xl hover:text-gray-300 z-10"
+      >&#8249;</button
+    >
+
+    <div class="max-w-4xl max-h-screen p-4">
+      <img
+        id="lightboxImg"
+        src=""
+        alt=""
+        class="max-w-full max-h-screen object-contain"
+      />
+      <p id="lightboxCaption" class="text-white text-center mt-4 text-lg"></p>
+    </div>
+
+    <button
+      id="nextBtn"
+      class="absolute right-4 text-white text-4xl hover:text-gray-300 z-10"
+      >&#8250;</button
+    >
+  </div>
+  <script type="module" src="/src/scripts/gallery.ts"></script>
+</section>

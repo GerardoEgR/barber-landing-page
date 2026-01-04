@@ -1,0 +1,66 @@
+---
+const testimonios = [
+  {
+    nombre: 'Carlos Méndez',
+    imagen:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
+    testimonio:
+      'Llevo 3 años viniendo y nunca me han decepcionado. La atención es impecable y siempre salgo luciendo increíble. Totalmente recomendado.',
+  },
+  {
+    nombre: 'Miguel Ángel Torres',
+    imagen:
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80',
+    testimonio:
+      'El mejor lugar para un corte de calidad. Los barberos son verdaderos artistas y el ambiente es de primera. Vale cada peso.',
+  },
+  {
+    nombre: 'Roberto Sánchez',
+    imagen:
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80',
+    testimonio:
+      'Profesionalismo y excelencia en cada visita. Me encanta cómo transforman mi look y el trato siempre es excepcional. Mi barbería favorita.',
+  },
+];
+---
+
+<section id="testimonios" class="py-20 bg-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-gray-200 text-4xl md:text-5xl font-bold mb-4 text-shadow-[4px_5px_4px_rgb(0_0_0_/0.9)]"
+      >
+        Lo Que Dicen Nuestros Clientes
+      </h2>
+      <div class="gold-line mx-auto mb-4"></div>
+      <p
+        class="text-gray-400 text-lg text-shadow-[2px_3px_2px_rgb(0_0_0_/0.9)]"
+      >
+        Testimonios reales de personas satisfechas
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        testimonios.map((testimonio) => (
+          <div class="bg-zinc-900 p-8 rounded-lg border border-zinc-700">
+            <div class="flex items-center mb-6">
+              <img
+                src={testimonio.imagen}
+                alt={testimonio.nombre}
+                class="w-16 h-16 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-bold text-lg text-gray-200">
+                  {testimonio.nombre}
+                </h4>
+                <div class="text-[#D4AF37]">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-gray-400 italic">{testimonio.testimonio}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,161 @@
+---
+import '../styles/global.css';
+---
+
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <div class="shrink-0">
+        <h1
+          class="text-2xl md:text-3xl font-bold text-[#D4AF37] text-shadow-[2px_3px_2px_rgb(0_0_0_/0.9)]"
+        >
+          BarberShop
+        </h1>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div
+        class="hidden md:flex space-x-8 text-shadow-[1px_2px_1px_rgb(0_0_0_/0.9)]"
+      >
+        <a
+          href="#inicio"
+          class="text-white hover:text-[#D4AF37] transition duration-300"
+          >Inicio</a
+        >
+        <a
+          href="#servicios"
+          class="text-white hover:text-[#D4AF37] transition duration-300"
+          >Servicios</a
+        >
+        <a
+          href="#nosotros"
+          class="text-white hover:text-[#D4AF37] transition duration-300"
+          >Nosotros</a
+        >
+        <a
+          href="#galeria"
+          class="text-white hover:text-[#D4AF37] transition duration-300"
+          >Galería</a
+        >
+        <a
+          href="#testimonios"
+          class="text-white hover:text-[#D4AF37] transition duration-300"
+          >Testimonios</a
+        >
+        <a
+          href="#contacto"
+          class="text-white hover:text-[#D4AF37] transition duration-300"
+          >Contacto</a
+        >
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden text-white focus:outline-none"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gray-800 opacity-70">
+    <div
+      class="px-2 pt-2 pb-3 space-y-1 text-shadow-[2px_2px_2px_rgb(0_0_0_/0.9)]"
+    >
+      <a
+        href="#inicio"
+        class="block px-3 py-2 text-white hover:text-gold transition">Inicio</a
+      >
+      <a
+        href="#servicios"
+        class="block px-3 py-2 text-white hover:text-gold transition"
+        >Servicios</a
+      >
+      <a
+        href="#nosotros"
+        class="block px-3 py-2 text-white hover:text-gold transition"
+        >Nosotros</a
+      >
+      <a
+        href="#galeria"
+        class="block px-3 py-2 text-white hover:text-gold transition">Galería</a
+      >
+      <a
+        href="#testimonios"
+        class="block px-3 py-2 text-white hover:text-gold transition"
+        >Testimonios</a
+      >
+      <a
+        href="#contacto"
+        class="block px-3 py-2 text-white hover:text-gold transition"
+        >Contacto</a
+      >
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (navbar && window.scrollY > 100) {
+      navbar.classList.add('bg-zinc-900', 'nav-shadow');
+      navbar.classList.add('border-b', 'border-gray-600');
+    } else if (navbar) {
+      navbar.classList.remove('bg-zinc-900', 'nav-shadow');
+      navbar.classList.remove('border-b', 'border-gray-600');
+    }
+  });
+
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('#mobile-menu a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document
+    .querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+    .forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute(
+          'href'
+        );
+        if (!targetId) return;
+
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+      });
+    });
+</script>
