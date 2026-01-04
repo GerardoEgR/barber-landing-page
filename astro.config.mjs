@@ -8,6 +8,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: 'https://gerardodg.github.io',
-  base: '/barber-shop-landing-page/',
+  base: '/barber-landing-page/',
   output: 'static',
 });
